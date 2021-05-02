@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>Guess the RGB</title>
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        background-color: rgb(27, 27, 27);
+        color: white;
+        text-align: center;
+        margin-top: 2vh;
+        font-family: Lemon Milk;
+        font-weight: 700;
+      }
+
+      h1 {
+        font-size: 82px;
+      }
+
+      .flexContainer {
+        margin: 13vh 2vw 10vw 2vw;
+        /* min-height: 100%;  
+        min-width: 100%; */
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .colors {
+        flex: 0 0 27%;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0px 2vw 4vw 2vw;
+        min-height: 200px;
+        min-width: 250px;
+        border-radius: 14px;
+        z-index: 300;
+        border: 0px;
+        cursor: pointer;
+      }
+
+      /* #c1 {
+        background-color: aliceblue;
+      }
+      #c2 {
+        background-color: aquamarine;
+      }
+
+      #c3 {
+        background-color: greenyellow;
+      }
+      #c4 {
+        background-color: orange;
+      }
+      #c5 {
+        background-color: rgb(50, 132, 255);
+      }
+      #c6 {
+        background-color: rgb(174, 0, 255);
+      } */
+    </style>
+
+    <div class="rgbTeller">
+      <h1>Guess the RGB</h1>
+      <p id="demo" style="color: red"></p>
+    </div>
+
+    <div class="flexContainer">
+      <button class="colors" id="c1" onclick="compare(this.id)"></button>
+      <button class="colors" id="c2" onclick="compare(this.id)"></button>
+      <button class="colors" id="c3" onclick="compare(this.id)"></button>
+      <button class="colors" id="c4" onclick="compare(this.id)"></button>
+      <button class="colors" id="c5" onclick="compare(this.id)"></button>
+      <button class="colors" id="c6" onclick="compare(this.id)"></button>
+    </div>
+
+    <script>
+      window.onload = function hexDisplayGiven() {
+        var hexCodeGiven = Math.floor(Math.random() * 0xffffff);
+        var hexCodeResultGiven = "#" + hexCodeGiven.toString(16);
+        document.getElementById(`demo`).innerHTML = "Hello world";
+        // `hello ${hexCodeResultGiven}`
+      };
+
+      window.onload = function colorGiver() {
+        for (i = 1; i < 7; i++) {
+          var hexCode = Math.floor(Math.random() * 0xffffff);
+          var hexCodeResult = "#" + hexCode.toString(16);
+          var res = document.getElementById(`c${i}`);
+          res.style.backgroundColor = hexCodeResult;
+          res.innerHTML = hexCodeResult;
+        }
+      };
+
+      // }
+      function compare(id) {
+        const ele = document.querySelector(`#${id}`);
+        var style = getComputedStyle(ele);
+        var bgColor = style.backgroundColor;
+
+        if (bgColor === hexCodeResult) {
+          alert("Correct Answer!");
+        } else {
+          alert("Try Again!");
+        }
+      }
+    </script>
+  </body>
+</html>
